@@ -22,6 +22,8 @@ print (socket.gethostname())
 serversocket.listen(5)
 connectionNumber = 0
 
+# Function to be run in a seperate thread.
+# Takes an active socket and handles input/output messages
 def handleConnection(conn, addr, connectionInstance):
     with conn:  # This is a socket! With syntax does not work on Python 2
         print('Connected by', addr)
@@ -44,6 +46,7 @@ def handleConnection(conn, addr, connectionInstance):
     print('Connected closed on ', addr)
     conn.close()
 
+# Handles receiving and accepting new TCP clients. 
 while True:  # Continuously listen for new clients
     conn, addr = serversocket.accept()
     client_thread = threading.Thread(target=handleConnection, args=(conn, addr, connectionNumber))

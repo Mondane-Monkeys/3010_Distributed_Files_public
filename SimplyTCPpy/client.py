@@ -9,6 +9,8 @@ server_address = (socket.gethostname(), 42424)
 # Connect to the server
 clientsocket.connect(server_address)
 
+# Continuously sends messages to server while connection is active
+# Connection ends when user enters "end"
 while True:
     # Get user input for the message
     message = input("Enter a message (type 'end' to exit): ")
