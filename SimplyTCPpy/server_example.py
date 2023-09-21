@@ -12,12 +12,15 @@ import threading
 
 # Create an INET, STREAMing socket
 serversocket = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
+
 # Bind the socket to a public host and a well-known port
 hostname = socket.gethostname()
 print("Listening on interface " + hostname)
+
 # This accepts a tuple...
 serversocket.bind((socket.gethostname(), 42424))
 print (socket.gethostname())
+
 # Become a server socket
 serversocket.listen(5)
 connectionNumber = 0
